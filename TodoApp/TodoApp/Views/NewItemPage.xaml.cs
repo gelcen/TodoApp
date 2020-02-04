@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using TodoApp.Models;
+using TodoApp.Model.TodoItems;
 
 namespace TodoApp.Views
 {
@@ -13,16 +14,16 @@ namespace TodoApp.Views
     [DesignTimeVisible(false)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public TodoItem Item { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            Item = new TodoItem()
             {
-                Text = "Item name",
-                Description = "This is an item description."
+                Text = "",
+                CreateDate = DateTime.Now
             };
 
             BindingContext = this;
@@ -30,7 +31,10 @@ namespace TodoApp.Views
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Item);
+            if (!string.IsNullOrWhiteSpace(Item.Text))
+            {
+                MessagingCenter.Send(this, "AddItem", Item);
+            }
             await Navigation.PopModalAsync();
         }
 

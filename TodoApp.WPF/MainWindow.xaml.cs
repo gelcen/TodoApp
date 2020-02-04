@@ -13,7 +13,7 @@ namespace TodoApp.WPF
             InitializeComponent();
 
             Forms.Init();
-            LoadApplication(new TodoApp.App());
+            LoadApplication(new TodoApp.App(new Setup()));
         }
     }
 }

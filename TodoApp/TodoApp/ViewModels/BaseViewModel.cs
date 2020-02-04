@@ -12,7 +12,7 @@ namespace TodoApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataRepository<Item> DataStore => DependencyService.Get<IDataRepository<Item>>();
 
         bool isBusy = false;
         public bool IsBusy

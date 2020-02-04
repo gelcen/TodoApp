@@ -3,17 +3,20 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using TodoApp.Services;
 using TodoApp.Views;
+using TodoApp.AppObjects;
 
 namespace TodoApp
 {
     public partial class App : Application
     {
 
-        public App()
+        public App(AppSetup setup)
         {
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+
+            AppContainer.Container = setup.CreateContainer();
             MainPage = new MainPage();
         }
 

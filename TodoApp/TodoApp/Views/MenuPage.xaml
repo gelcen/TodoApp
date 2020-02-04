@@ -8,6 +8,9 @@
              Title="Menu">
              
     <StackLayout VerticalOptions="FillAndExpand">
+        <Label Text="TodoApp" 
+               FontSize="30"
+               Margin="10"/>
         <ListView x:Name="ListViewMenu"
                     HasUnevenRows="True">
             <d:ListView.ItemsSource>

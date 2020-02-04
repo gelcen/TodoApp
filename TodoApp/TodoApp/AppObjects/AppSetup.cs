@@ -1,4 +1,7 @@
 ﻿using Autofac;
+using TodoApp.Model.TodoItems;
+using TodoApp.Services;
+using TodoApp.ViewModels;
 
 namespace TodoApp.AppObjects
 {
@@ -14,7 +17,9 @@ namespace TodoApp.AppObjects
         protected virtual 
             void RegisterDependencies(ContainerBuilder cb)
         {
-
+            cb.RegisterType<TodosMockRepository>()
+                .As<IDataRepository<TodoItem>>().SingleInstance();
+            cb.RegisterType<ItemsViewModel>().AsSelf();
         }
     }
 }

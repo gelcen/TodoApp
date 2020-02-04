@@ -6,7 +6,7 @@ using TodoApp.Models;
 
 namespace TodoApp.Services
 {
-    public class MockDataStore : IDataStore<Item>
+    public class MockDataStore : IDataRepository<Item>
     {
         readonly List<Item> items;
 
@@ -55,6 +55,16 @@ namespace TodoApp.Services
         public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
+        }
+
+        public Task<bool> DeleteItemAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Item> GetItemAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

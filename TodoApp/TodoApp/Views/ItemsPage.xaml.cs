@@ -23,8 +23,8 @@ namespace TodoApp.Views
         public ItemsPage()
         {
             InitializeComponent();
-
-            BindingContext = viewModel = new ItemsViewModel();
+            var vmw = new ViewModelWrapper<ItemsViewModel>();
+            BindingContext = viewModel = vmw.ViewModel;
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

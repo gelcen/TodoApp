@@ -7,25 +7,29 @@ using Xamarin.Forms;
 
 using TodoApp.Models;
 using TodoApp.Views;
+using TodoApp.Model.TodoItems;
+using TodoApp.Services;
 
 namespace TodoApp.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ItemsViewModel : BaseViewModel, IViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        IDataRepository<TodoItem> _repository;
+        public ObservableCollection<TodoItem> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public ItemsViewModel()
+        public ItemsViewModel(IDataRepository<TodoItem> repository)
         {
+            _repository = repository;
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Items = new ObservableCollection<TodoItem>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, TodoItem>(this, "AddItem", async (obj, item) =>
             {
-                var newItem = item as Item;
+                var newItem = item as TodoItem;
                 Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
+                await _repository.AddItemAsync(newItem);
             });
         }
 
@@ -39,7 +43,7 @@ namespace TodoApp.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                var items = await _repository.GetItemsAsync(true);
                 foreach (var item in items)
                 {
                     Items.Add(item);
