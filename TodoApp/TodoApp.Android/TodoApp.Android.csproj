@@ -56,10 +56,14 @@
     <PackageReference Include="Autofac">
       <Version>4.9.4</Version>
     </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.6.292</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991477" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbPath.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,6 +94,14 @@
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TodoApp.Model\TodoApp.Model.csproj">
+      <Project>{CB0CD64B-59E4-4AF3-A8B6-0CE989EF68FC}</Project>
+      <Name>TodoApp.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TodoApp.Repository\TodoApp.Repository.csproj">
+      <Project>{B80304B3-49A4-43FF-87CB-3BCA6289ACBE}</Project>
+      <Name>TodoApp.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TodoApp\TodoApp.csproj">
       <Project>{C83692CE-8F24-4C5A-A4CC-7E52E1FBF5B3}</Project>
       <Name>TodoApp</Name>

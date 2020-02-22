@@ -14,8 +14,6 @@ namespace TodoApp
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-
             AppContainer.Container = setup.CreateContainer();
             MainPage = new MainPage();
         }

@@ -2,13 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
-using Xamarin.Forms;
-
-using TodoApp.Models;
-using TodoApp.Views;
 using TodoApp.Model.TodoItems;
-using TodoApp.Services;
+using TodoApp.Repository;
+using TodoApp.Views;
+using Xamarin.Forms;
 
 namespace TodoApp.ViewModels
 {

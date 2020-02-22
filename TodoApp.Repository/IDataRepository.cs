@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace TodoApp.Services
+namespace TodoApp.Repository
 {
     public interface IDataRepository<T>
     {
